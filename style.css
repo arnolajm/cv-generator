@@ -1,0 +1,262 @@
+/* BASE */
+:root{
+  --primary:#4f46e5;
+  --primary-light:#6366f1;
+  --muted:#6b7280;
+  --card:#ffffffee; /* sedikit transparan untuk efek glass */
+  --radius:16px;
+  --shadow: 0 15px 40px rgba(0,0,0,0.1);
+  --max-width:1000px;
+  --pdf-width: 800px;
+  --bg-gradient: linear-gradient(180deg,#1f2937,#111827);
+  --blue:#4f46e5;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family: "Poppins", "Inter", Arial, sans-serif;
+  min-height:100vh;
+  background:var(--bg-gradient);
+  color:#111827;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:20px;
+}
+
+/* header */
+.site-header{
+  width:100%;
+  padding:30px 16px;
+  text-align:center;
+  color:white;
+  background: linear-gradient(90deg,var(--primary), var(--primary-light));
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:20px;
+  transition: all 0.3s;
+}
+.site-header:hover{transform:translateY(-3px);}
+.site-header h1{margin:0;font-size:1.8rem;letter-spacing:1px;font-weight:700;}
+.site-header p{margin-top:6px;opacity:0.9;}
+
+/* main wrap */
+.main-wrap{
+  width:95%;
+  max-width:var(--max-width);
+  margin-bottom:50px;
+}
+
+/* wizard card */
+.wizard{
+  background:var(--card);
+  backdrop-filter: blur(10px);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  padding:24px;
+  transition:all 0.3s;
+}
+.wizard:hover{transform:translateY(-2px);}
+
+/* step nav */
+.steps{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+}
+.step-btn{
+  border:1px solid #e0e7ff;
+  background:transparent;
+  color:#374151;
+  padding:10px 16px;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.step-btn:hover{background:var(--primary-light); color:white;}
+.step-btn.active{
+  background:var(--primary);
+  color:white;
+  box-shadow:0 8px 20px rgba(79,70,229,0.25);
+}
+
+/* step contents */
+.step-content{padding:12px 0}
+.step{display:none}
+.step.active{display:block}
+
+.step h2{margin:8px 0 14px;color:var(--primary); font-weight:600;}
+
+/* inputs */
+input, textarea{
+  width:100%;
+  padding:12px 16px;
+  border-radius:12px;
+  border:1px solid #d1d5db;
+  background:#fff;
+  font-size:15px;
+  transition:border 0.3s;
+}
+input:focus, textarea:focus{border-color:var(--primary); outline:none;}
+
+/* actions */
+.actions{display:flex;gap:12px;margin-top:16px;justify-content:flex-end;}
+.btn{
+  padding:12px 18px;
+  border-radius:12px;
+  border:none;
+  background:var(--primary);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.btn:hover{transform:translateY(-2px); box-shadow:0 6px 18px rgba(79,70,229,0.3);}
+.btn-outline{
+  background:transparent;
+  border:2px dashed rgba(79,70,229,0.2);
+  color:var(--primary);
+}
+.actions{display:flex;gap:12px;margin-top:16px;justify-content:flex-end;}
+.btn-primary{
+  padding:12px 18px;
+  border-radius:12px;
+  border:none;
+  background:var(--primary);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+
+/* preview CV */
+.preview-wrap{
+  margin-top:20px;
+  display:flex;
+  gap:20px;
+  flex-direction:column;
+  align-items:center;
+}
+.cv-preview{
+  width:100%;
+  max-width:var(--pdf-width);
+  background:var(--card);
+  border-radius:16px;
+  padding:0;
+  box-shadow:0 15px 40px rgba(0,0,0,0.15);
+  overflow:hidden;
+  transform-origin:top center;
+}
+
+/* CV layout */
+.cv{width:100%; background:white; position:relative; font-family:"Inter", sans-serif;}
+.cv .banner{
+  height:100px;
+  background:linear-gradient(90deg,var(--primary), var(--primary-light));
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  position:relative;
+}
+.cv .photo-wrap{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:50px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  border:6px solid white;
+}
+.cv .photo-wrap img{width:100%;height:100%;object-fit:cover;}
+.cv .name{
+  margin-top:80px;
+  text-align:center;
+  font-size:30px;
+  letter-spacing:4px;
+  font-weight:700;
+  color:#1f2937;
+}
+.cv .content{display:flex;gap:40px; padding:32px;}
+.cv .col-left{width:36%; padding-right:6px;}
+.cv .col-right{flex:1;}
+
+/* section */
+.cv .section{margin-bottom:20px;}
+.cv .section h4{
+  font-size:15px;
+  margin:0 0 10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  color:#1f2937;
+}
+.cv .section h4 .accent{
+  width:45px; height:6px; background:var(--primary); border-radius:3px;
+}
+
+/* skill row */
+.skill-row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:6px;
+}
+.skill-name{font-weight:600; color:#1f2937;}
+.skill-level{color:var(--muted); font-style:italic;}
+
+.skill-level-input {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.skill-level-input:hover {
+  border-color: var(--primary-light);
+}
+
+.skill-level-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 6px rgba(79,70,229,0.3);
+}
+
+/* opsional: buat dropdown arrow lebih modern */
+.skill-level-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='%236b7280' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+/* responsive */
+@media (max-width:900px){
+  .cv .content{flex-direction:column}
+  .cv .col-left{width:100%}
+  .cv .name{font-size:24px}
+  .cv .photo-wrap{width:100px;height:100px;top:30px}
+  .cv .banner{height:80px}
+}
+@media (max-width:480px){
+  .row{flex-direction:column}
+  .actions{flex-direction:column;align-items:stretch}
+}

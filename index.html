@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CV Generator Interaktif</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- html2pdf (untuk export PDF) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>CV Generator Interaktif</h1>
+    <p>Isi data bertahap → preview → unduh PDF</p>
+  </header>
+
+  <main class="main-wrap">
+    <section class="wizard">
+      <!-- Step navigation -->
+      <div class="steps">
+        <button class="step-btn active" data-step="1">1. Detail Pribadi</button>
+        <button class="step-btn" data-step="2">2. Pendidikan</button>
+        <button class="step-btn" data-step="3">3. Pengalaman</button>
+        <button class="step-btn" data-step="4">4. Keahlian</button>
+        <button class="step-btn" data-step="5">5. Preview</button>
+      </div>
+
+      <!-- Step contents -->
+      <div class="step-content">
+
+        <!-- STEP 1: DETAIL PRIBADI -->
+        <form id="step-1" class="step active">
+          <h2>Detail Pribadi</h2>
+          <div class="row">
+            <div class="col">
+              <label>Nama Lengkap *</label>
+              <input id="inp-nama" required placeholder="Masukkan Nama Lengkap" />
+            </div>
+            <div class="col">
+              <label>Email *</label>
+              <input id="inp-email" type="email" required placeholder="Masukkan Email" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label>Telepon</label>
+              <input id="inp-telp" placeholder="Masukkan No Telepon" />
+            </div>
+            <div class="col">
+              <label>Alamat</label>
+              <input id="inp-alamat" placeholder="Masukkan Alamat" />
+            </div>
+          </div>
+
+          <label>LinkedIn / Website</label>
+          <input id="inp-link" placeholder="linkedin.com/in/..." />
+
+          <label>Profil Singkat</label>
+          <textarea id="inp-profil" rows="4" placeholder="Tuliskan ringkasan / profil singkat"></textarea>
+
+          <label>Foto (jpg/png) — tampil di preview</label>
+          <input id="inp-foto" type="file" accept="image/*" />
+
+          <div class="actions">
+            <button type="button" class="btn next">Lanjut ke Pendidikan →</button>
+          </div>
+        </form>
+
+        <!-- STEP 2: PENDIDIKAN -->
+        <div id="step-2" class="step">
+          <h2>Pendidikan</h2>
+          <div id="edu-list"></div>
+          <button id="add-edu" class="btn-outline">+ Tambah Pendidikan</button>
+
+          <div class="actions">
+            <button type="button" class="btn prev">← Kembali</button>
+            <button type="button" class="btn next">Lanjut ke Pengalaman →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: PENGALAMAN -->
+        <div id="step-3" class="step">
+          <h2>Pengalaman Kerja</h2>
+          <div id="exp-list"></div>
+          <button id="add-exp" class="btn-outline">+ Tambah Pengalaman</button>
+
+          <div class="actions">
+            <button type="button" class="btn prev">← Kembali</button>
+            <button type="button" class="btn next">Lanjut ke Keahlian →</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: KEAHLIAN -->
+        <div id="step-4" class="step">
+          <h2>Keahlian</h2>
+          <p>Tambahkan skill</p>
+          <div id="skill-list"></div>
+          <button id="add-skill" class="btn-outline">+ Tambah Keahlian</button>
+
+          <div class="actions">
+            <button type="button" class="btn prev">← Kembali</button>
+            <button type="button" class="btn next">Preview CV →</button>
+          </div>
+        </div>
+
+        <!-- STEP 5: PREVIEW -->
+        <div id="step-5" class="step">
+          <h2>Preview & Download</h2>
+          <p>Periksa hasil CV di area preview. Klik "Download PDF" untuk menyimpan.</p>
+
+          <div class="actions">
+            <button type="button" class="btn prev">← Kembali</button>
+            <button id="btn-generate" class="btn-primary">Preview CV</button>
+          </div>
+
+          <div class="preview-wrap">
+            <div id="cv-preview" class="cv-preview"></div>
+            <div class="preview-actions">
+              <button id="btn-download" class="btn-primary" style="display:none">Download PDF</button>
+              <button id="btn-edit" class="btn-outline" style="display:none">Edit Data</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>CV Generator • dibuat dengan ❤️</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
